@@ -5,39 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas 1</title>
+    <title>Canvas Lab1</title>
 </head>
 
 <body>
     <div>
-        <span><a href="https://przydal.github.io/PG2D/">html</a></span>
+        <span><a href="https://przydal.github.io/PG2D/" target="_blank">html</a></span>
         <span><a href="https://github.com/Przydal/PG2D" target="_blank">kod</a></span>
     </div>
     <canvas id="myCanvas" width="800" height="600">
     </canvas>
 </body>
-<script>
-    var startColor = "#008000";
-    var endColor = "#3498db";
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-
-
-    function draw() {
-        ctx.fillStyle = ctx.fillStyle === startColor ? endColor : startColor;
-        ctx.fill();
-        console.log(ctx.fillStyle);
-    }
-
-    ctx.beginPath();
-    ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fillStyle = endColor;
-    ctx.fill();
-
-    window.requestAnimationFrame(draw);
-    var interval = setInterval(draw, 1000);
-
+<script src="script.js">
 </script>
 
 </html>
