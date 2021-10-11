@@ -1,5 +1,5 @@
-const startColor = "#008000";
-const endColor = "#3498db";
+const startColor = [0, 245, 0];
+const endColor = [0, 0, 245];
 const FPS = 60;
 const radius = 50;
 
@@ -7,17 +7,21 @@ var canvas;
 var ctx;
 var ballY = 200;
 var step = 10;
-
+var currentColor = [0, 245, 0];
+var colorStep = 5;
+var gradient;
 
 window.onload = function () {
     canvas = document.getElementById("myCanvas");
     ctx = canvas.getContext("2d");
-    ctx.fillStyle = startColor;
+    gradient = ctx.createLinearGradient(0, 100, 200, 0);
+    gradient.addColorStop(0, `rgb(${startColor[0]}, ${startColor[1]}, ${startColor[2]})`);
+    gradient.addColorStop(1, `rgb(${endColor[0]}, ${endColor[1]}, ${endColor[2]})`);
+    ctx.fillStyle = gradient;
     setInterval(() => {
         updatePositon();
         draw();
     }, 1000 / FPS);
-    setInterval(updateColor, 1000);
 }
 
 function draw() {
@@ -33,10 +37,6 @@ function updatePositon() {
         step = -step;
     }
     if (ballY <= 0 + radius) {
-        step = -step;;
+        step = -step;
     }
-}
-
-function updateColor() {
-    ctx.fillStyle = ctx.fillStyle === startColor ? endColor : startColor;
 }
